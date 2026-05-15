@@ -1,20 +1,53 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <h1>Bienvenido, {{ nombreUsuario }}</h1>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-button [color]="colorDinamico">Botón Dinámico</ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <hr />
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Paso 3: Eventos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Contador: <strong>{{ contador }}</strong></p>
+      <ion-button (click)="aumentarNumero()" expand="block" color="success">Incrementar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <hr />
+
+  <ion-item>
+    <ion-label position="stacked">Paso 4: ngModel</ion-label>
+    <ion-input [(ngModel)]="textoDinamico" placeholder="Escribe aquí..."></ion-input>
+  </ion-item>
+  <p>Texto: {{ textoDinamico }}</p>
+
+  <hr />
+
+  <ion-item>
+    <ion-label>Mostrar mensaje secreto</ion-label>
+    <ion-toggle [(ngModel)]="mostrarContenido"></ion-toggle>
+  </ion-item>
+
+  @if (mostrarContenido) {
+    <ion-card color="tertiary">
+      <ion-card-content>
+        <strong>¡Logrado!</strong> Este mensaje es condicional.
+      </ion-card-content>
+    </ion-card>
+  }
+
+  <hr />
+
+  <h3>Paso 6: Lista de Herramientas</h3>
+  <ion-list>
+    @for (item of herramientas; track item) {
+      <ion-item>
+        <ion-label>{{ item }}</ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
 </ion-content>
